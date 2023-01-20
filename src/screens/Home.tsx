@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from "react-native";
 import { generateRangeDatesFromYearStart } from '../utils/generateRangeBetweenDates';
 
 import { Header } from "../components/Header";
-import { HabitDay, DAY_SIZE } from "./HabitDay";
+import { HabitDay, DAY_SIZE } from "../components/HabitDay";
 
 const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
 const datesFromYearStart = generateRangeDatesFromYearStart()
