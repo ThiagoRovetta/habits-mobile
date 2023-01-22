@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { ScrollView, View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
-import { Feather } from '@expo/vector-icons'
+import { useState } from 'react';
+import { ScrollView, View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
-import { BackButton } from "../components/BackButton";
-import { Checkbox } from "../components/Checkbox";
-import colors from "tailwindcss/colors";
-import { api } from "../lib/axios";
+import { BackButton } from '../components/BackButton';
+import { Checkbox } from '../components/Checkbox';
+import colors from 'tailwindcss/colors';
+import { api } from '../lib/axios';
 
 const availableWeekDays = [
   'Domingo',
@@ -15,7 +15,7 @@ const availableWeekDays = [
   'Quinta-feira',
   'Sexta-feira',
   'Sábado'
-]
+];
 
 export function New() {
   const [title, setTitle] = useState('');
@@ -32,7 +32,7 @@ export function New() {
   async function handleCreateNewHabit() {
     try {
       if (!title.trim() || weekDays.length === 0) {
-        Alert.alert('Novo hábito', 'Informe o nome do hábito e escolha a periodicidade')
+        return Alert.alert('Novo hábito', 'Informe o nome do hábito e escolha a periodicidade');
       }
 
       await api.post('/habits', { title, weekDays });
@@ -40,10 +40,10 @@ export function New() {
       setTitle('');
       setWeekDays([]);
 
-      Alert.alert('Novo hábito', 'Hábito criado com sucesso')
+      Alert.alert('Novo hábito', 'Hábito criado com sucesso');
     } catch (error) {
-      Alert.alert('Ops', 'Não foi possível criar o novo hábito')
-      console.log(error)
+      Alert.alert('Ops', 'Não foi possível criar o novo hábito');
+      console.log(error);
     }
   }
 
@@ -55,11 +55,11 @@ export function New() {
       >
 
         <BackButton />
-        
+
         <Text className="mt-6 text-white font-extrabold text-3xl">
           Criar hábito
         </Text>
-        
+
         <Text className="mt-6 text-white font-semibold text-base">
           Qual seu comprometimento?
         </Text>
@@ -75,7 +75,7 @@ export function New() {
         <Text className="mt-4 mb-3 text-white font-semibold text-base">
           Qual a recorrência?
         </Text>
-        
+
         {
           availableWeekDays.map((weekDay, index) => (
             <Checkbox
@@ -105,5 +105,5 @@ export function New() {
 
       </ScrollView>
     </View>
-  )
+  );
 }
